@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      GPS Tracker
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">GPS Tracker</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Ubicación Actual</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Usamos ngIf para mostrar la ubicación solo si la tenemos -->
+        <div *ngIf="currentLocation; else noLocation">
+          <p><strong>Latitud:</strong> {{ currentLocation.lat }}</p>
+          <p><strong>Longitud:</strong> {{ currentLocation.lng }}</p>
+        </div>
+        <!-- Mensaje a mostrar si no hay ubicación -->
+        <ng-template #noLocation>
+          <ion-text color="medium">
+            <p>Inicia el seguimiento para ver tu ubicación.</p>
+          </ion-text>
+        </ng-template>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Botones para controlar el seguimiento -->
+    <ion-button expand="block" (click)="startGpsTracking()" [disabled]="trackingActive">
+      Iniciar Seguimiento
+    </ion-button>
+
+    <ion-button expand="block" color="danger" (click)="stopGpsTracking()" [disabled]="!trackingActive">
+      Detener Seguimiento
+    </ion-button>
+  </div>
+</ion-content>

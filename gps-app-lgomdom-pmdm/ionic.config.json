@@ -1,0 +1,7 @@
+{
+  "name": "gps-app-lgomdom-pmdm",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
